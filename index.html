@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Weather App</h1>
+    </header>
+
+    <main>
+        <section id="search">
+            <form id="weather-form">
+                <label for="location">Enter City or Zip Code:</label>
+                <input type="text" id="location" name="location" required>
+                <button type="submit">Get Weather</button>
+            </form>
+        </section>
+
+        <section id="current-weather"></section>
+        <section id="forecast"></section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Weather App. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
