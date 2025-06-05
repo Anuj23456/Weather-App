@@ -7,29 +7,21 @@ document.getElementById('weather-form').addEventListener('submit', function (eve
 });
 
 async function getWeather(location) {
-  const apiKey = '786dfe56017ae4a386ab03326e5e8a00'; // Replace in production
-  const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
-  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${apiKey}&units=metric`;
+  const url = `/.netlify/functions/weather?location=${encodeURIComponent(location)}`;
 
   document.getElementById('loading').style.display = 'block';
   document.getElementById('current-weather').innerHTML = '';
   document.getElementById('forecast').innerHTML = '';
 
   try {
-    const [currentRes, forecastRes] = await Promise.all([
-      fetch(currentWeatherUrl),
-      fetch(forecastUrl)
-    ]);
-
-    if (!currentRes.ok || !forecastRes.ok) {
-      throw new Error('Failed to fetch weather data');
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error('Failed to fetch from serverless function');
     }
 
-    const currentData = await currentRes.json();
-    const forecastData = await forecastRes.json();
-
-    displayCurrentWeather(currentData);
-    displayForecast(forecastData);
+    const { current, forecast } = await res.json();
+    displayCurrentWeather(current);
+    displayForecast(forecast);
   } catch (error) {
     document.getElementById('current-weather').innerHTML = `<p>Error: ${error.message}</p>`;
   } finally {
