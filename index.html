@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>Weather App</h1>
-    </header>
+  <header>
+    <h1>🌤️ Weather App</h1>
+  </header>
 
-    <main>
-        <section id="search">
-            <form id="weather-form">
-                <label for="location">Enter City or Zip Code:</label>
-                <input type="text" id="location" name="location" required>
-                <button type="submit">Get Weather</button>
-            </form>
-        </section>
+  <main>
+    <form id="weather-form" class="form">
+      <input type="text" id="location" name="location" placeholder="Enter city or zip..." required />
+      <button type="submit">Search</button>
+    </form>
 
-        <section id="current-weather"></section>
-        <section id="forecast"></section>
-    </main>
+    <div id="loading" class="loading">Loading...</div>
+    <section id="current-weather" class="card"></section>
+    <section id="forecast" class="forecast-grid"></section>
+  </main>
 
-    <footer>
-        <p>&copy; 2024 Weather App. All rights reserved.</p>
-    </footer>
+  <footer>
+    <p>&copy; 2024 Weather App. All rights reserved.</p>
+  </footer>
 
-    <script src="scripts.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
